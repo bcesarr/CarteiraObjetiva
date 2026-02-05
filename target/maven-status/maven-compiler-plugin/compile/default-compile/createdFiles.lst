@@ -1,2 +1,4 @@
-com/carteiraobjetiva/carteiraobjetiva/HelloController.class
+com/carteiraobjetiva/carteiraobjetiva/controller/HelloController.class
+com/carteiraobjetiva/carteiraobjetiva/controller/SaldoController.class
 com/carteiraobjetiva/carteiraobjetiva/CarteiraObjetivaApplication.class
+com/carteiraobjetiva/carteiraobjetiva/service/SaldoService.class
