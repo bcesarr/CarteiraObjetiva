@@ -1,4 +1,4 @@
-package com.carteiraobjetiva.carteiraobjetiva.carteiraobjetiva;
+package com.carteiraobjetiva.carteiraobjetiva;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
