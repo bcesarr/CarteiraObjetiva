@@ -48,10 +48,12 @@ public class ContaController {
         } else {
             resposta.put("Mensagem", "Contas cadastradas:");
         }
+        
         resposta.put("Contas", lista);
         return resposta;
     }
 
+    // Modelo simples para exibir lista vazia quando não há contas cadastradas
     // public List<Conta> listarContas() {
     //     return contaService.listarContas();
     // }

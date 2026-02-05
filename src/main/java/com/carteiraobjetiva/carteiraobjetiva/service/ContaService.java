@@ -14,13 +14,13 @@ public class ContaService {
     private Map<Long, Conta> contas = new HashMap<>();
     private Long proximoId = 1L;
 
-    // private Conta obterContaOuErro(Long id) {
-    //     Conta conta = contas.get(id);
-    //     if (conta == null) {
-    //         throw new RuntimeException("Conta não encontrada");
-    //     }
-    //     return conta;
-    // }
+    private Conta obterContaOuErro(Long id) {
+        Conta conta = contas.get(id);
+        if (conta == null) {
+            throw new RuntimeException("Conta não encontrada");
+        }
+        return conta;
+    }
 
     public Conta criarConta(String nomeTitular, double saldoInicial) {
         Conta conta = new Conta(proximoId, nomeTitular, saldoInicial);
@@ -30,26 +30,18 @@ public class ContaService {
     }
 
     public void depositar(Long id, double valor) {
-        Conta conta = contas.get(id);
-        if (conta == null) {
-            throw new RuntimeException("Conta não encontrada");
-        }
+        Conta conta = obterContaOuErro(id);
         conta.depositar(valor);
+
     }
 
     public boolean sacar(Long id, double valor) {
-        Conta conta = contas.get(id);
-        if (conta == null) {
-            throw new RuntimeException("Conta não encontrada");
-        }
+        Conta conta = obterContaOuErro(id);
         return conta.sacar(valor);
     }
 
     public double verSaldo(Long id) {
-        Conta conta = contas.get(id);
-        if (conta == null) {
-            throw new RuntimeException("Conta não encontrada");
-        }
+        Conta conta = obterContaOuErro(id);
         return conta.getSaldo();
     }
     
@@ -58,10 +50,6 @@ public class ContaService {
     }
 
     public Conta buscarConta(Long id) {
-        Conta conta = contas.get(id);
-        if (conta == null) {
-            throw new RuntimeException("Conta não encontrada");
-        }
-        return conta;
+        return obterContaOuErro(id);
     }
 }
