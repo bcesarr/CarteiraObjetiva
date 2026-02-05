@@ -15,7 +15,7 @@ public class ContaService {
     private Long proximoId = 1L;
 
     public Conta criarConta(String nomeTitular, double saldoInicial) {
-        Conta conta = new Conta(proximoId, nomeTitular, 0.0);
+        Conta conta = new Conta(proximoId, nomeTitular, saldoInicial);
         contas.put(proximoId, conta);
         proximoId++;
         return conta;
