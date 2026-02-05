@@ -3,6 +3,7 @@ package com.carteiraobjetiva.carteiraobjetiva.controller;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import com.carteiraobjetiva.carteiraobjetiva.model.Conta;
 import com.carteiraobjetiva.carteiraobjetiva.service.ContaService;
 import org.springframework.web.bind.annotation.*;
@@ -33,15 +34,26 @@ public class ContaController {
     }
 
     @GetMapping("/verSaldo")
-    public double verSaldo(@RequestParam Long id) {
-        return contaService.verSaldo(id);
+    public Map<String, Object> verSaldo(@RequestParam Long id) {
+        double saldo = contaService.verSaldo(id);
+        Map<String, Object> resposta = new LinkedHashMap<>(); // Mantém a ordem de inserção se usar o Linked mas e mais lento e utiliza mais memória
+                                                              // HashMap é mais rápido e utiliza menos memória, mas a ordem de inserção é imprevisivel
+
+        resposta.put("Id", id);
+        resposta.put("Saldo da conta:", saldo);
+        return resposta;
     }
+
+
+    // public double verSaldo(@RequestParam Long id) {
+    //     return contaService.verSaldo(id);
+    // }
 
     @GetMapping("/listar")
     public Map<String, Object> listarContas() {
         List<Conta> lista = contaService.listarContas();
 
-        Map<String, Object> resposta = new HashMap<>();
+        Map<String, Object> resposta = new LinkedHashMap<>();
 
         if (lista.isEmpty()) {
             resposta.put("Mensagem", "Nenhuma conta foi cadastrada ainda.");
