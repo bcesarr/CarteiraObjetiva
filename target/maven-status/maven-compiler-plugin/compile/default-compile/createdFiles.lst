@@ -1,5 +1,6 @@
+com/carteiraobjetiva/carteiraobjetiva/service/ContaService.class
+com/carteiraobjetiva/carteiraobjetiva/service/SaldoService.class
 com/carteiraobjetiva/carteiraobjetiva/model/Conta.class
 com/carteiraobjetiva/carteiraobjetiva/controller/HelloController.class
 com/carteiraobjetiva/carteiraobjetiva/controller/SaldoController.class
 com/carteiraobjetiva/carteiraobjetiva/CarteiraObjetivaApplication.class
-com/carteiraobjetiva/carteiraobjetiva/service/SaldoService.class

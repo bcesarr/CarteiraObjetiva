@@ -2,4 +2,5 @@
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/controller/HelloController.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/controller/SaldoController.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/model/Conta.java
+/home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/service/ContaService.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/service/SaldoService.java
