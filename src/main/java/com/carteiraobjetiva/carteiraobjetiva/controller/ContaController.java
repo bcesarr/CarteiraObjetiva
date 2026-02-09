@@ -33,6 +33,11 @@ public class ContaController {
         return contaService.sacar(id, valor);
     }
 
+    @PostMapping("/transferir")
+    public boolean transferir(@RequestParam Long idOrigem, @RequestParam Long idDestino, @RequestParam double valor) {
+        return contaService.transferir(idOrigem, idDestino, valor);
+    }
+
     @GetMapping("/verSaldo")
     public Map<String, Object> verSaldo(@RequestParam Long id) {
         double saldo = contaService.verSaldo(id);

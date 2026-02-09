@@ -40,6 +40,24 @@ public class ContaService {
         return conta.sacar(valor);
     }
 
+    public boolean transferir(Long idOrigem, Long idDestino, double valor) {
+        Conta contaOrigem = obterContaOuErro(idOrigem);
+        Conta contaDestino = obterContaOuErro(idDestino);
+
+        if (valor <= 0) {
+            throw new RuntimeException("Valor deve ser maior que zero");
+        }
+
+        boolean saqueRealizado = contaOrigem.sacar(valor);
+
+        if (!saqueRealizado) {
+            throw new RuntimeException("Saldo insuficiente para transferência");
+        }
+
+        contaDestino.depositar(valor);
+        return true;
+    }
+
     public double verSaldo(Long id) {
         Conta conta = obterContaOuErro(id);
         return conta.getSaldo();
