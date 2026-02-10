@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import com.carteiraobjetiva.carteiraobjetiva.model.Conta;
 import com.carteiraobjetiva.carteiraobjetiva.service.ContaService;
+import com.carteiraobjetiva.carteiraobjetiva.dto.CriarContaRequestDTO;
+import com.carteiraobjetiva.carteiraobjetiva.dto.TransferenciaRequestDTO;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,8 +28,11 @@ public class ContaController {
 
     // Utilizamos o RequestParam já que o valor vem da Query String, ou seja, não faz parte da rota
     @PostMapping("/criar")
-    public Conta criarConta(@RequestParam String nomeTitular, @RequestParam double saldoInicial) {
-        return contaService.criarConta(nomeTitular, saldoInicial);
+    public Conta criarConta(@RequestBody CriarContaRequestDTO request) {
+        return contaService.criarConta(
+            request.getNomeTitular(),
+            request.getSaldoInicial()
+        );
     }
 
     @PostMapping("/{id}/depositar")
@@ -40,9 +45,13 @@ public class ContaController {
         return contaService.sacar(id, valor);
     }
 
-    @PostMapping("/{idOrigem}/transferir/{idDestino}")
-    public boolean transferir(@PathVariable Long idOrigem, @PathVariable Long idDestino, @RequestParam double valor) {
-        return contaService.transferir(idOrigem, idDestino, valor);
+    @PostMapping("/transferir")
+    public boolean transferir(@RequestBody TransferenciaRequestDTO request) {
+        return contaService.transferir(
+            request.getIdOrigem(),
+            request.getIdDestino(),
+            request.getValor()
+        );
     }
 
     @GetMapping("/{id}/verSaldo")

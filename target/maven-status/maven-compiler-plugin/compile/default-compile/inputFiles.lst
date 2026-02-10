@@ -1,4 +1,6 @@
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/CarteiraObjetivaApplication.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/controller/ContaController.java
+/home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/dto/CriarContaRequestDTO.java
+/home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/dto/TransferenciaRequestDTO.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/model/Conta.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/service/ContaService.java
