@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+
+import jakarta.validation.Valid;
+
 import com.carteiraobjetiva.carteiraobjetiva.model.Conta;
 import com.carteiraobjetiva.carteiraobjetiva.service.ContaService;
 import com.carteiraobjetiva.carteiraobjetiva.dto.CriarContaRequestDTO;
@@ -28,7 +31,7 @@ public class ContaController {
 
     // Utilizamos o RequestParam já que o valor vem da Query String, ou seja, não faz parte da rota
     @PostMapping("/criar")
-    public Conta criarConta(@RequestBody CriarContaRequestDTO request) {
+    public Conta criarConta(@RequestBody @Valid CriarContaRequestDTO request) {
         return contaService.criarConta(
             request.getNomeTitular(),
             request.getSaldoInicial()
@@ -46,7 +49,7 @@ public class ContaController {
     }
 
     @PostMapping("/transferir")
-    public boolean transferir(@RequestBody TransferenciaRequestDTO request) {
+    public boolean transferir(@RequestBody @Valid TransferenciaRequestDTO request) {
         return contaService.transferir(
             request.getIdOrigem(),
             request.getIdDestino(),

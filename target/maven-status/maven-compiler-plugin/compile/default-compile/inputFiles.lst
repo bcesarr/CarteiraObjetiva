@@ -3,6 +3,7 @@
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/dto/CriarContaRequestDTO.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/dto/TransferenciaRequestDTO.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/exception/ContaNaoEncontradaException.java
+/home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/exception/ErrorResponse.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/exception/GlobalExceptionHandler.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/exception/SaldoInsuficienteException.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/exception/ValorInvalidoException.java
