@@ -18,28 +18,35 @@ public class ContaController {
         this.contaService = contaService;
     }
 
+    // RequestParam = parâmetros da requisição
+    // RequestParam → geralmente usado pra filtros, configurações, dados auxiliares
+    
+    // PathVariable = identidade do recurso
+    // PathVariable → usado pra identificar um recurso específico
+
+    // Utilizamos o RequestParam já que o valor vem da Query String, ou seja, não faz parte da rota
     @PostMapping("/criar")
     public Conta criarConta(@RequestParam String nomeTitular, @RequestParam double saldoInicial) {
         return contaService.criarConta(nomeTitular, saldoInicial);
     }
 
-    @PostMapping("/depositar")
-    public void depositar(@RequestParam Long id, @RequestParam double valor) {
+    @PostMapping("/{id}/depositar")
+    public void depositar(@PathVariable Long id, @RequestParam double valor) {
         contaService.depositar(id, valor);
     }
 
-    @PostMapping("/sacar")
-    public boolean sacar(@RequestParam Long id, @RequestParam double valor) {
+    @PostMapping("/{id}/sacar")
+    public boolean sacar(@PathVariable Long id, @RequestParam double valor) {
         return contaService.sacar(id, valor);
     }
 
-    @PostMapping("/transferir")
-    public boolean transferir(@RequestParam Long idOrigem, @RequestParam Long idDestino, @RequestParam double valor) {
+    @PostMapping("/{idOrigem}/transferir/{idDestino}")
+    public boolean transferir(@PathVariable Long idOrigem, @PathVariable Long idDestino, @RequestParam double valor) {
         return contaService.transferir(idOrigem, idDestino, valor);
     }
 
-    @GetMapping("/verSaldo")
-    public Map<String, Object> verSaldo(@RequestParam Long id) {
+    @GetMapping("/{id}/verSaldo")
+    public Map<String, Object> verSaldo(@PathVariable Long id) {
         double saldo = contaService.verSaldo(id);
         Map<String, Object> resposta = new LinkedHashMap<>(); // Mantém a ordem de inserção se usar o Linked mas e mais lento e utiliza mais memória
                                                               // HashMap é mais rápido e utiliza menos memória, mas a ordem de inserção é imprevisivel
@@ -75,7 +82,7 @@ public class ContaController {
     //     return contaService.listarContas();
     // }
 
-    
+    // Utilizamos aqui o PathVariable para buscar a conta pelo Id, no caminho da URL, ja que o valor faz parte da rota
     @GetMapping("/{id}")
     public Conta buscarConta(@PathVariable Long id) {
         return contaService.buscarConta(id);

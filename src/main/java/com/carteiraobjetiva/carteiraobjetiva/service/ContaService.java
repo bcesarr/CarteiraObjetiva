@@ -30,12 +30,19 @@ public class ContaService {
     }
 
     public void depositar(Long id, double valor) {
+        if (valor <= 0) {
+            throw new RuntimeException("Valor deve ser maior que zero");
+        }
+        
         Conta conta = obterContaOuErro(id);
         conta.depositar(valor);
-
     }
 
     public boolean sacar(Long id, double valor) {
+        if (valor <= 0) {
+            throw new RuntimeException("Valor deve ser maior que zero");
+        }
+
         Conta conta = obterContaOuErro(id);
         return conta.sacar(valor);
     }
