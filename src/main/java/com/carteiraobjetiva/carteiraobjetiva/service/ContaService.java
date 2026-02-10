@@ -3,6 +3,10 @@ package com.carteiraobjetiva.carteiraobjetiva.service;
 import com.carteiraobjetiva.carteiraobjetiva.model.Conta;
 import org.springframework.stereotype.Service;
 
+import com.carteiraobjetiva.carteiraobjetiva.exception.ContaNaoEncontradaException;
+import com.carteiraobjetiva.carteiraobjetiva.exception.SaldoInsuficienteException;
+import com.carteiraobjetiva.carteiraobjetiva.exception.ValorInvalidoException;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -17,7 +21,7 @@ public class ContaService {
     private Conta obterContaOuErro(Long id) {
         Conta conta = contas.get(id);
         if (conta == null) {
-            throw new RuntimeException("Conta não encontrada");
+            throw new ContaNaoEncontradaException(id);
         }
         return conta;
     }
@@ -31,7 +35,7 @@ public class ContaService {
 
     public void depositar(Long id, double valor) {
         if (valor <= 0) {
-            throw new RuntimeException("Valor deve ser maior que zero");
+            throw new ValorInvalidoException();
         }
         
         Conta conta = obterContaOuErro(id);
@@ -40,28 +44,35 @@ public class ContaService {
 
     public boolean sacar(Long id, double valor) {
         if (valor <= 0) {
-            throw new RuntimeException("Valor deve ser maior que zero");
+            throw new ValorInvalidoException();
         }
 
         Conta conta = obterContaOuErro(id);
-        return conta.sacar(valor);
+
+        boolean saqueRealizado = conta.sacar(valor);
+        if (!saqueRealizado) {
+            throw new SaldoInsuficienteException();
+        }
+
+        return true;
     }
 
     public boolean transferir(Long idOrigem, Long idDestino, double valor) {
+        if (valor <= 0) {
+            throw new ValorInvalidoException();
+        }
+        
         Conta contaOrigem = obterContaOuErro(idOrigem);
         Conta contaDestino = obterContaOuErro(idDestino);
-
-        if (valor <= 0) {
-            throw new RuntimeException("Valor deve ser maior que zero");
-        }
-
+        
         boolean saqueRealizado = contaOrigem.sacar(valor);
 
         if (!saqueRealizado) {
-            throw new RuntimeException("Saldo insuficiente para transferência");
+            throw new SaldoInsuficienteException();
         }
 
         contaDestino.depositar(valor);
+        
         return true;
     }
 
