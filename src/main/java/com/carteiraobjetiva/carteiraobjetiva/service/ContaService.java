@@ -46,7 +46,7 @@ public class ContaService {
     // }
 
     public Conta criarConta(String nomeTitular, double saldoInicial) {
-        Conta conta = new Conta(null, nomeTitular, saldoInicial);
+        Conta conta = new Conta(nomeTitular, saldoInicial);
         return contaRepository.save(conta);
     }
 

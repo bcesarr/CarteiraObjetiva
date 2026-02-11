@@ -1,11 +1,3 @@
-com/carteiraobjetiva/carteiraobjetiva/exception/ContaNaoEncontradaException.class
-com/carteiraobjetiva/carteiraobjetiva/exception/ValorInvalidoException.class
-com/carteiraobjetiva/carteiraobjetiva/service/ContaService.class
 com/carteiraobjetiva/carteiraobjetiva/controller/ContaController.class
-com/carteiraobjetiva/carteiraobjetiva/exception/SaldoInsuficienteException.class
-com/carteiraobjetiva/carteiraobjetiva/exception/ErrorResponse.class
-com/carteiraobjetiva/carteiraobjetiva/model/Conta.class
-com/carteiraobjetiva/carteiraobjetiva/dto/TransferenciaRequestDTO.class
-com/carteiraobjetiva/carteiraobjetiva/dto/CriarContaRequestDTO.class
-com/carteiraobjetiva/carteiraobjetiva/exception/GlobalExceptionHandler.class
+com/carteiraobjetiva/carteiraobjetiva/repository/ContaRepository.class
 com/carteiraobjetiva/carteiraobjetiva/CarteiraObjetivaApplication.class

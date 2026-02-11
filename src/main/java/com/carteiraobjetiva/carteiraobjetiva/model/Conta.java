@@ -5,7 +5,7 @@ import javax.annotation.processing.Generated;
 import jakarta.persistence.*;
 
 @Entity
-@table(name = "contas")
+@Table(name = "contas")
 public class Conta {
 
     @Id

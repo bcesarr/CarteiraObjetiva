@@ -8,4 +8,5 @@
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/exception/SaldoInsuficienteException.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/exception/ValorInvalidoException.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/model/Conta.java
+/home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/repository/ContaRepository.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/service/ContaService.java
