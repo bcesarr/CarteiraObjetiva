@@ -1,13 +1,27 @@
 package com.carteiraobjetiva.carteiraobjetiva.model;
 
+import javax.annotation.processing.Generated;
+
+import jakarta.persistence.*;
+
+@Entity
+@table(name = "contas")
 public class Conta {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nomeTitular;
+
     private double saldo;
 
-    public Conta(Long id, String nomeTitular, double saldoInicial) {
-        this.id = id;
+    // Construtor padrão(vazio) necessário para o JPA
+    public Conta() {
+    }
+
+    public Conta(String nomeTitular, double saldoInicial) {
+        // this.id = id;
         this.nomeTitular = nomeTitular;
         this.saldo = saldoInicial;
     }
