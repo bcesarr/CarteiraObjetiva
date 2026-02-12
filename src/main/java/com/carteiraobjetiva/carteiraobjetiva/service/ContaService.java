@@ -126,6 +126,10 @@ public class ContaService {
     @Transactional
     public boolean transferir(Long idOrigem, Long idDestino, double valor) {
 
+        if (idOrigem == null || idDestino == null) {
+            throw new IllegalArgumentException("IDs não podem ser nulos");
+        }
+
         if (idOrigem.equals(idDestino)) {
             throw new IllegalArgumentException("Conta de origem e destino não podem ser iguais");
         }
