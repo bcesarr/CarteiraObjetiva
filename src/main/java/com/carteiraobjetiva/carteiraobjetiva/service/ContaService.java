@@ -3,6 +3,8 @@ package com.carteiraobjetiva.carteiraobjetiva.service;
 import com.carteiraobjetiva.carteiraobjetiva.model.Conta;
 import com.carteiraobjetiva.carteiraobjetiva.repository.ContaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import com.carteiraobjetiva.carteiraobjetiva.exception.ContaNaoEncontradaException;
 import com.carteiraobjetiva.carteiraobjetiva.exception.SaldoInsuficienteException;
@@ -121,7 +123,13 @@ public class ContaService {
     //     return true;
     // }
 
+    @Transactional
     public boolean transferir(Long idOrigem, Long idDestino, double valor) {
+
+        if (idOrigem.equals(idDestino)) {
+            throw new IllegalArgumentException("Conta de origem e destino não podem ser iguais");
+        }
+        
         if (valor <= 0) {
             throw new ValorInvalidoException();
         }
@@ -137,8 +145,9 @@ public class ContaService {
 
         contaDestino.depositar(valor);
 
-        contaRepository.save(contaOrigem);
-        contaRepository.save(contaDestino);
+        // Como estamos usando @Transactional, as alterações nas entidades serão automaticamente persistidas no banco de dados ao final do método, caso não ocorra nenhuma exceção. Portanto, não é necessário chamar explicitamente o método save() para cada conta.
+        // contaRepository.save(contaOrigem);
+        // contaRepository.save(contaDestino);
         
         return true;
     }
