@@ -1,4 +1,6 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
-    "java.configuration.updateBuildConfiguration": "interactive"
+    // "java.configuration.updateBuildConfiguration": "interactive",
+    "java.autobuild.enabled": true,
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
