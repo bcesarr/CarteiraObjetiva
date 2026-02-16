@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 
 import com.carteiraobjetiva.carteiraobjetiva.model.Conta;
 import com.carteiraobjetiva.carteiraobjetiva.service.ContaService;
+import com.carteiraobjetiva.carteiraobjetiva.service.CotacaoMoedaService;
 import com.carteiraobjetiva.carteiraobjetiva.dto.CriarContaRequestDTO;
 import com.carteiraobjetiva.carteiraobjetiva.dto.TransferenciaRequestDTO;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +19,11 @@ import org.springframework.web.bind.annotation.*;
 public class ContaController {
 
     private final ContaService contaService;
+    private final CotacaoMoedaService cotacaoMoedaService;
 
-    public ContaController(ContaService contaService) {
+    public ContaController(ContaService contaService, CotacaoMoedaService cotacaoMoedaService) {
         this.contaService = contaService;
+        this.cotacaoMoedaService = cotacaoMoedaService;
     }
 
     // RequestParam = parâmetros da requisição
@@ -98,5 +101,37 @@ public class ContaController {
     @GetMapping("/{id}")
     public Conta buscarConta(@PathVariable Long id) {
         return contaService.buscarConta(id);
+    }
+
+    // Endpoint para converter o saldo da conta para outra moeda
+    @GetMapping("/{id}/converter")
+    public Map<String, Object> converterSaldo(
+        @PathVariable Long id,
+        @RequestParam String moeda
+    ) {
+        // Busca a conta pelo ID
+        Conta conta = contaService.buscarConta(id);
+        
+        // Pega o saldo atual da conta em Reais (BRL)
+        double saldoBRL = conta.getSaldo();
+
+        // Converte o saldo para a moeda solicitada usando a API de cotação externa 
+        double valorConvertido = cotacaoMoedaService.converterValor(saldoBRL, moeda);
+
+        // Obtem a taxa de câmbio atual
+        double taxaCambio = cotacaoMoedaService.obterTaxaCambio(moeda);
+
+        // Monta a resposta em formato de mapa (JSON)
+        Map<String, Object> resposta = new LinkedHashMap<>();
+
+        resposta.put("Id", conta.getId());
+        resposta.put("nomeTitular", conta.getNomeTitular());
+        resposta.put("saldoBRL", saldoBRL);
+        resposta.put("moedaDestino", moeda.toUpperCase());
+        resposta.put("valorConvertido", valorConvertido);
+        resposta.put("taxaCambio", taxaCambio);
+        resposta.put("dataConsulta", java.time.LocalDateTime.now());
+
+        return resposta;
     }
 }
