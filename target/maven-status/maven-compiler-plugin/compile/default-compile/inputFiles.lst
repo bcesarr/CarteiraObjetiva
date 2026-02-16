@@ -1,5 +1,6 @@
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/CarteiraObjetivaApplication.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/controller/ContaController.java
+/home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/dto/ConverterMoedaResponseDTO.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/dto/CriarContaRequestDTO.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/dto/TransferenciaRequestDTO.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/exception/ContaNaoEncontradaException.java
@@ -8,5 +9,7 @@
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/exception/SaldoInsuficienteException.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/exception/ValorInvalidoException.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/model/Conta.java
+/home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/model/CotacaoMoeda.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/repository/ContaRepository.java
 /home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/service/ContaService.java
+/home/codespace/CarteiraObjetiva/src/main/java/com/carteiraobjetiva/carteiraobjetiva/service/CotacaoMoedaService.java

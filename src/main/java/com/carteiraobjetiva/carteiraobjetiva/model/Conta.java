@@ -1,6 +1,6 @@
 package com.carteiraobjetiva.carteiraobjetiva.model;
 
-import javax.annotation.processing.Generated;
+// import javax.annotation.processing.Generated;
 
 import jakarta.persistence.*;
 

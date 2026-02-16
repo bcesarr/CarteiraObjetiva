@@ -2,7 +2,7 @@ package com.carteiraobjetiva.carteiraobjetiva.controller;
 
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
+// import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import jakarta.validation.Valid;
@@ -103,23 +103,31 @@ public class ContaController {
         return contaService.buscarConta(id);
     }
 
-    // Endpoint para converter o saldo da conta para outra moeda
     @GetMapping("/{id}/converter")
     public Map<String, Object> converterSaldo(
         @PathVariable Long id,
         @RequestParam String moeda
     ) {
+    
         // Busca a conta pelo ID
         Conta conta = contaService.buscarConta(id);
         
         // Pega o saldo atual da conta em Reais (BRL)
         double saldoBRL = conta.getSaldo();
+        
+        System.out.println("===== DEBUG CONTROLLER =====");
+        System.out.println("Saldo BRL: " + saldoBRL);
 
         // Converte o saldo para a moeda solicitada usando a API de cotação externa 
         double valorConvertido = cotacaoMoedaService.converterValor(saldoBRL, moeda);
+        System.out.println("Valor Convertido após service: " + valorConvertido);
+        System.out.println("É NaN? " + Double.isNaN(valorConvertido));
 
         // Obtem a taxa de câmbio atual
         double taxaCambio = cotacaoMoedaService.obterTaxaCambio(moeda);
+        System.out.println("Taxa Câmbio após service: " + taxaCambio);
+        System.out.println("É NaN? " + Double.isNaN(taxaCambio));
+        System.out.println("===========================");
 
         // Monta a resposta em formato de mapa (JSON)
         Map<String, Object> resposta = new LinkedHashMap<>();
